@@ -3,7 +3,6 @@ This section compares the 11a/b packet detection Embedded algorithm prior to the
 ## 1.1. 11a Algorithm / Strategy Comparison
 ### 1.1.1. Algorithm Comparison
 
-
 ### 1.1.2. Strategy Comparison
 **Embedded Detection Strategy (fs=20M)**  
 （1）Cross-Correlation Detection Strategy
