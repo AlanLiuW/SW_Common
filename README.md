@@ -1,1 +1,1 @@
-SW XAalg commom library
+SW XAalg common library
