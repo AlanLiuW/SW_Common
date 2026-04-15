@@ -5,17 +5,19 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 **(a) Algorithm Description**
 | Algo | Legacy | redesigned |
 |-------------|-----------|----------------|
-| AC-algo.1 | delay16-auto(delay sequence use sign bit) | delay16-auto(delay sequence use phase info.) | 
+| AC-algo.1 | delay16-auto(delay sequence use sign bit,modulus) | delay16-auto(delay sequence use phase info,modulus) | 
 | AC-algo.2 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
 | AC-algo.3 | ~ | freq. offset(phase) estiamtion from the input sequence | 
-| AC-algo.4 | ~ | delay8-auto(delay sequence use phase info.) | 
+| AC-algo.4 | ~ | delay8-auto(delay sequence use phase info,modulus) | 
 |-| | |
-| XC-algo.1 | Local sequence: non-constant modulus | Local sequence: constant modulus | 
-| XC-algo.2 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
-| XC-algo.3 | ~ | freq. offset(accumulation phase) compensation to input sequence for cross-correlation | 
+| XC-algo.1 | 1us length Cross-Corr(modulus) | 1us length Cross-Corr(modulus)) | 
+| XC-algo.2 | Local sequence: non-constant modulus | Local sequence: constant modulus | 
+| XC-algo.3 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
+| XC-algo.4 | ~ | freq. offset(accumulation phase) compensation to input sequence for cross-correlation | 
 |-| | |
-| power-algo.1 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
-| power-algo.2 | ~ | Antenna weight calculation ( LUT ) | 
+| power-algo.1 | Antenna power calculation(modulus)  | Antenna power calculation(modulus) | 
+| power-algo.2 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
+| power-algo.3 | ~ | Antenna weight calculation ( LUT ) | 
 
 **(b) Strategy Description**
 | Dec | Legacy | redesigned |
