@@ -25,24 +25,25 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 | XC-dec | for n = n_0 XC(n) > pho_XC*P(n) | for n = n_0 and n_0+16 XC(n) > pho_XC*P(n)| 
 
 
-## 1.2. 11b Algorithm / Strategy Comparison
-### 1.2.1. Algorithm Comparison
+## 1.2. 11b Algorithm / Strategy Description
 
+**(a) Algorithm Description**
+| Algo | Legacy | redesigned |
+|-------------|-----------|----------------|
+| XC-algo.1 | 1us length Cross-Corr(modulus square) | 2us length approximate Maximum Likelihood Cross-Corr(modulus) | 
+| XC-algo.2 | ~(only 1 RX antenna used） | Antennas Comb.(antenna power weight) | 
+| XC-algo.3 | EWMA (Exponentially Weighted Moving Average) | ~ | 
+| XC-algo.4 | Sum of the Top 3 Maximum Values in Each Interval of Length 22 | ~ | 
+|-| | |
+| power-algo.1 | Antenna power calculation(modulus square)  | Antenna power calculation(modulus) | 
+| power-algo.2 | ~ | Antenna weight calculation ( LUT ) | 
+| power-algo.3 | ~ | Antennas Comb.(antenna power weight) | 
+| power-algo.4 | smoothing | ~ | 
 
-### 1.2.2. Strategy Comparison
-**redesigned Detection Strategy (fs=22M)**  
-（1）Cross-Correlation Detection Strategy
-- Sliding window detection (detection completed within 6μs)  
-  Take every 22 points as one detection window, and judge by window: whether there exist points in the window that meet the following condition:  
-  <div align="center">XC > P * XC_Thr </div>  
-  If satisfied, mark the window as detection passed and record the positions of the points meeting the condition in the window.  
-- Continuous judgment  
-  Among all windows marked as detection passed, if there exist **3 consecutive passed windows** with a point interval of 22 and 44 between windows, the cross-correlation (XC) detection is judged as passed.
-
-**legacy Detection Strategy**  
-（1） Cross-Correlation Detection Strategy  
- - If any point within the full sampling range meets the following condition, the cross-correlation (XC) detection is judged as passed:  
-   <div align="center">XC > P * XC_Thr </div> 
+**(b) Strategy Description**
+| Dec | Legacy | redesigned |
+|-------------|-----------|----------------|
+| XC-dec | for n = n_0 XC(n) > pho_XC*P(n) | for n = n_0 and n_0+22 and n_0+44 XC(n) > pho_XC*P(n)| 
 
 
 # 2. 11a/b Simulation Platform Modification and Simulation Results  
