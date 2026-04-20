@@ -15,16 +15,18 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 | XC-algo.3 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
 | XC-algo.4 | ~ | freq. offset(accumulation phase) compensation to input sequence for cross-correlation | 
 |-| | |
-| power-algo.1 | Antenna power calculation(modulus)  | Antenna power calculation(modulus) | 
+| power-algo.1 | Moving average antenna power calculation(modulus)  | Moving average antenna power calculation(modulus) | 
 | power-algo.2 | Antennas Comb.(equal weight) | Antennas Comb.(antenna power weight) | 
 | power-algo.3 | ~ | Antenna weight calculation ( LUT ) | 
 
 **(b) Strategy Description**
 | Dec | Legacy | redesigned |
 |-------------|-----------|----------------|
-| AC-dec| for n = n_0 AC_D16(n) > pho_AC16*P(n)  | for n = n_0 and n_0+16 AC_D16(n) > pho_AC16 *P(n) and AC_D8(n) < pho_AC8 *P(n) | 
+| AC-dec=true| for n = n0 <br> AC_D16(n) > $\rho_{AC16}$*P(n)  | for n = n0 and n0+16 <br> AC_D16(n) > $\rho_{AC16}$ *P(n) and AC_D8(n) < $\rho_{AC8}$ *P(n) | 
 |-| | |
-| XC-dec | for n = n_0 XC(n) > pho_XC*P(n) | for n = n_0 and n_0+16 XC(n) > pho_XC*P(n)| 
+| XC-dec=true | for n = n0 <br> XC(n) > $\rho_{XC}$*P(n) | for n = n0 and n0+16 <br> XC(n) > $\rho_{XC}$*P(n)| 
+|-| | |
+| Joint AC/XC-dec=true | AC-dec=true or XC-dec=true | AC-dec=true or XC-dec=true | 
 
 
 ## 1.2. 11b Algorithm / Strategy Description
@@ -34,18 +36,18 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 |-------------|-----------|----------------|
 | XC-algo.1 | 1us length Cross-Corr(modulus square) | 2us length approximate Maximum Likelihood Cross-Corr(modulus) | 
 | XC-algo.2 | ~(only 1 RX antenna used） | Antennas Comb.(antenna power weight) | 
-| XC-algo.3 | EWMA (Exponentially Weighted Moving Average) | ~ | 
+| XC-algo.3 | Exponentially Weighted Moving Average(1 feedback IIR, delay22) | ~ | 
 | XC-algo.4 | Sum of the Top 3 Maximum Values in Each Interval of Length 22 | ~ | 
 |-| | |
-| power-algo.1 | Antenna power calculation(modulus square)  | Antenna power calculation(modulus) | 
+| power-algo.1 | Instance antenna power calculation(modulus square)  | Moving average antenna power calculation(modulus) | 
 | power-algo.2 | ~ | Antenna weight calculation ( LUT ) | 
 | power-algo.3 | ~ | Antennas Comb.(antenna power weight) | 
-| power-algo.4 | smoothing | ~ | 
+| power-algo.4 | Smoothing(1 order TimeVariable IIR) | ~ | 
 
 **(b) Strategy Description**
 | Dec | Legacy | redesigned |
 |-------------|-----------|----------------|
-| XC-dec | for n = n_0 XC(n) > pho_XC*P(n) | for n = n_0 and n_0+22 and n_0+44 XC(n) > pho_XC*P(n)| 
+| XC-dec = true | for n = n0 <br> XC(n) > $\rho_{XC}$*P(n) | for n = n0 and n0+22 and n0+44 <br>  XC(n) > $\rho_{XC}$*P(n)| 
 
 
 # 2. 11a/b Simulation Platform Modification and Simulation Results  
