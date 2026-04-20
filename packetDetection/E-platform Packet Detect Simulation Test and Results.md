@@ -39,7 +39,7 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 | XC-algo.3 | Exponentially Weighted Moving Average(1 feedback IIR, delay22) | ~ | 
 | XC-algo.4 | Sum of the Top 3 Maximum Values in Each Interval of Length 22 | ~ | 
 |-| | |
-| power-algo.1 | Instance antenna power calculation(modulus square)  | Moving average antenna power calculation(modulus) | 
+| power-algo.1 | Instance antenna power calculation(modulus square,L=1)  | Moving average antenna power calculation(modulus,L=44) | 
 | power-algo.2 | ~ | Antenna weight calculation ( LUT ) | 
 | power-algo.3 | ~ | Antennas Comb.(antenna power weight) | 
 | power-algo.4 | Smoothing(1 order TimeVariable IIR) | ~ | 
