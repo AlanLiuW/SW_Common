@@ -1,5 +1,5 @@
 # 1. The redesign and legacy algorithm solution description  
-Compare the different PD(Package Detection) algorithm solutions on E-platform prior of the CSFlag1, including algorithms & decision strategies.
+Compare the different PD algorithm solutions on E-platform prior of the CSFlag1, including algorithms & decision strategies.
 ## 1.1. 11a Algorithm / Strategy Description
 
 **(a) Algorithm Description**
