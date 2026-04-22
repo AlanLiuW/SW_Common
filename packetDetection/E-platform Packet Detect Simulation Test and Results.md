@@ -1,5 +1,5 @@
-# 1. The redesigned and legacy algorithm description based on E-platform  
-This section compares the 11a/b packet detection redesigned algorithm prior to the CSFlag1 state with the legacy algorithm, analyzes their core differences, and compares their decision strategies in packet detection.  
+# 1. The redesign and legacy algorithm solution description  
+Compare the different PD(Package Detection) algorithm solutions on E-platform prior of the CSFlag1, including algorithms & decision strategies.
 ## 1.1. 11a Algorithm / Strategy Description
 
 **(a) Algorithm Description**
@@ -51,25 +51,18 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 
 
 # 2. 11a/b Simulation Platform Modification and Simulation Results  
-This section describes the modifications to the simulation Platform and the corresponding simulation results under the normal operation of the 11a/b packet detection module.  
-## 2.1.  Simulation Platform Modification
-### 2.1.1.  common  
-**(1) add pf signal source**  
-
-Add AWGN signal source on the Rx side of the E-platform for pf simulation.  
-
-**(2) add statistics**  
-
-Add statistics of relevant results in the E-platform, collect package detection results, and conduct performance analysis:
+Describes the modifications to the simulation Platform and the corresponding simulation results.  
+## 2.1.  Simulation Environment Change
+### 2.1.1.  Platform Modify  
+**(1) Enable the AWGN source on the Rx-side for the $P_{f}$-performance verification**  
+**(2) Add statistical variables to collect intermediate simulation results and obtain performance indicators**  
 | Results Statistics | Location |
 |-------------|-----------|
 |CSFlag1 <br> CSFlag2 <br> CSFlag3 <br> DsssDet | in AGCLoop.m |
 |L-SIG Decoder |in OFDMHeaderDemod.m|
 |mdmOn.ofdm <br> mdmOn.dsss |in ExeCase.m |
 
-**(3) Configuration modification**  
-
-In the normal process of E-platform entering the package detection process, the configuration parameters need to be modified as follows:
+**(3) Modify the configuration to ensure the normal operation of the package detection process**  
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
 |SIM.PerfCrit|snr|pant|in tc_xxx.txt|
@@ -77,18 +70,17 @@ In the normal process of E-platform entering the package detection process, the 
 |CFG.AGC|PFCT|FXPT|in defSTAs.txt|
 |RF.RFName|NON|KARST|in defSTAs.txt|
 
-### 2.1.2.  11a  
+### 2.1.2.  11a PD Modify
 In order to continue the packet detection process even at low SNR (less than 1dB), the configuration needs to be modified as follows：
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
 |RIU.rampUpGap_qdB|16|6|in defSTAs.txt|
 
-
-### 2.1.3.  11b
+### 2.1.3.  11b PD Modify
 
 ## 2.2.  Simulation Results
 ### 2.2.1.  11a
-### 2.2.1.1  Pf  
+### 2.2.1.1.  $P_{f}$  
 **Legacy Algo**  
 
 The independent simulation results of AC/XC are as follows:  
@@ -99,7 +91,7 @@ The Joint simulation results of AC/XC are as follows:
    <img src="./figSet/legacy_1T2R_Joint_pf.png" width="800" />  
 **Redesign Algo**
 
-### 2.2.1.1  Pm(AWGN)  
+### 2.2.1.1.  $P_{m}$(AWGN)  
 **Legacy Algo**  
 The overall simulation results are shown below：
   <img src="./figSet/legacy_pf1%25_pm.png" width="800" />  
@@ -112,9 +104,9 @@ The line in the figure is explained as follows：
 | green | Joint || - | - || - | - |  
 
 *Conclusion*  
-(1) Under the same pf conditions, XC pm performs better than AC;  
+(1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
 (2) with CFO(40ppm), XC performance degradation of about 1dB, AC performance improvement of about 1dB(delay sequence use sign bit);  
-(3) Joint Pm:The performance of 1T2R is improved by about 3dB compared to 1T1R; with CFO(40ppm), The overall performance degradation is about 0.5dB;  
+(3) Joint:The performance of 1T2R is improved by about 3dB compared to 1T1R; with CFO(40ppm), The overall performance degradation is about 0.5dB;  
 
 **Redesign Algo**
 
