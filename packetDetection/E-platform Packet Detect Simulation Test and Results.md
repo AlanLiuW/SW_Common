@@ -73,7 +73,12 @@ In the normal process of E-platform entering the package detection process, the 
 |CFG.AGC|PFCT|FXPT|in defSTAs.txt|
 |RF.RFName|NON|KARST|in defSTAs.txt|
 
-### 2.1.2.  11a
+### 2.1.2.  11a  
+In order to continue the packet detection process even at low SNR (less than 1dB), the configuration needs to be modified as follows：
+| Parameter | Default Value | Modification Value | Location |
+|-------------|-----------|----------------|----------------|
+|RIU.rampUpGap_qdB|16|6|in defSTAs.txt|
+
 
 ### 2.1.3.  11b
 
