@@ -92,7 +92,7 @@ The Joint simulation results of AC/XC are as follows:
 ### 3.1.2.  $P_{m}$(AWGN)  
 **Legacy Algo**  
 The overall simulation results are shown below, linear and color introduction:  
-solid：no CFO,dash: CFO=40ppm; red:XC,blue:AC,green:Joint;  
+solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
   <img src="./figSet/legacy_pf1%25_pm.png" width="800" />  
   <img src="./figSet/legacy_pf01%25_pm.png" width="800" />    
 
