@@ -53,9 +53,29 @@ This section compares the 11a/b packet detection redesigned algorithm prior to t
 # 2. 11a/b Simulation Platform Modification and Simulation Results  
 This section describes the modifications to the simulation Platform and the corresponding simulation results under the normal operation of the 11a/b packet detection module.  
 ## 2.1.  Simulation Platform Modification
-### 2.1.1.  11a
+### 2.1.1.  common  
+**add pf signal source**
+Add AWGN signal source on the Rx side of the E-platform for pf simulation.  
+**add statistics**  
+Add statistics of relevant results in the E-platform, collect package detection results, and conduct performance analysis:
+| results statistics | Location |
+|-------------|-----------|
+|CSFlag1 <br> CSFlag2 <br> CSFlag3 <br> DsssDet | in AGCLoop.m |
+|L-SIG Decoder |in OFDMHeaderDemod.m|
+|mdmOn.ofdm <br> mdmOn.dsss |in ExeCase.m |
 
-### 2.1.2.  11b
+**Configuration modification**  
+In the normal process of E-platform entering the package detection process, the configuration parameters need to be modified as follows:
+| Parameter | Default Value | Modification Value | Location |
+|-------------|-----------|----------------|----------------|
+|SIM.PerfCrit|snr|pant|tc_xxx.txt|
+|CFG.RXALG|FLPT|FXPT|defSTAs.txt|
+|CFG.AGC|PFCT|FXPT|defSTAs.txt|
+|RF.RFName|NON|KARST|defSTAs.txt|
+
+### 2.1.2.  11a
+
+### 2.1.3.  11b
 
 ## 2.2.  Simulation Results
 ### 2.2.1.  11a
