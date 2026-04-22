@@ -96,7 +96,7 @@ The independent simulation results of AC/XC are as follows:
  
 The Joint simulation results of AC/XC are as follows:
   <img src="./figSet/legacy_1T1R_Joint_pf.png" width="800" />  
- 
+   <img src="./figSet/legacy_1T2R_Joint_pf.png" width="800" />  
 **Redesign Algo**
 
 ### 2.2.1.1  Pm(AWGN)  
