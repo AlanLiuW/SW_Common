@@ -50,10 +50,8 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 | XC-dec = true | for n = n0 <br> XC(n) > $\rho_{XC}$*P(n) | for n = n0 and n0+22 and n0+44 <br>  XC(n) > $\rho_{XC}$*P(n)| 
 
 
-# 2. 11a/b Simulation Platform Modification and Simulation Results  
-Describes the modifications to the simulation Platform and the corresponding simulation results.  
-## 2.1.  Simulation Environment Change
-### 2.1.1.  Platform Modify  
+# 2. 11a/b Simulation Platform Description
+## 2.1.  Simulation Environment Change Description
 **(1) Enable the AWGN source on the Rx-side for the $P_{f}$-performance verification**  
 **(2) Add statistical variables to collect intermediate simulation results and obtain performance indicators**  
 | Results Statistics | Location |
@@ -70,17 +68,17 @@ Describes the modifications to the simulation Platform and the corresponding sim
 |CFG.AGC|PFCT|FXPT|in defSTAs.txt|
 |RF.RFName|NON|KARST|in defSTAs.txt|
 
-### 2.1.2.  11a PD Modify
+### 2.2.  11a PD Modify Description
 In order to continue the packet detection process even at low SNR (less than 1dB), the configuration needs to be modified as follows：
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
 |RIU.rampUpGap_qdB|16|6|in defSTAs.txt|
 
-### 2.1.3.  11b PD Modify
+### 2.3.  11b PD Modify Description
 
-## 2.2.  Simulation Results
-### 2.2.1.  11a
-### 2.2.1.1.  $P_{f}$  
+## 3. Simulation Results
+## 3.1 11a
+### 3.1.1.  $P_{f}$  
 **Legacy Algo**  
 
 The independent simulation results of AC/XC are as follows:  
@@ -91,17 +89,12 @@ The Joint simulation results of AC/XC are as follows:
    <img src="./figSet/legacy_1T2R_Joint_pf.png" width="800" />  
 **Redesign Algo**
 
-### 2.2.1.1.  $P_{m}$(AWGN)  
+### 3.1.2.  $P_{m}$(AWGN)  
 **Legacy Algo**  
-The overall simulation results are shown below：
+The overall simulation results are shown below, linear and color introduction:  
+solid：no CFO,dash: CFO=40ppm; red:XC,blue:AC,green:Joint;  
   <img src="./figSet/legacy_pf1%25_pm.png" width="800" />  
   <img src="./figSet/legacy_pf01%25_pm.png" width="800" />    
-The line in the figure is explained as follows：  
-| color | mean || linear | mean || marker | mean |
-| - | - |-| - | - |-| - | - |
-| red | XC || solid line | no CFO || no marker | 1T1R |
-| blue | AC || dashed line | CFO=40ppm || circle | 1T2R |
-| green | Joint || - | - || - | - |  
 
 *Conclusion*  
 (1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
@@ -113,7 +106,4 @@ The line in the figure is explained as follows：
 **compare**
 
 
-
-
-
-### 2.2.2.  11b
+### 3.2.  11b
