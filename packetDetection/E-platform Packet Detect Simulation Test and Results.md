@@ -93,7 +93,7 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 *Conclusion*  
 (1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
 (2) with CFO(40ppm), XC performance degradation of about 1dB, AC performance improvement of about 1dB(delay sequence use sign bit);  
-(3) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO(40ppm), the performance degradation is about 0.5dB;  
+(3) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO=40ppm, the performance degradation is about 0.5dB;  
 
 **Redesign Algo**
 
