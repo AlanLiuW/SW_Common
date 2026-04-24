@@ -52,9 +52,9 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 
 # 2. 11a/b Simulation Platform Description
 ## 2.1.  Simulation Environment Change Description
-**(1) Enable the AWGN source on the Rx-side for the $P_{f}$-performance verification**  
-**(2) Add statistical variables to collect intermediate simulation results and obtain performance indicators**  
-**(3) Modify the configuration parameter to ensure the normal operation of the package detection process**  
+(1) Enable the AWGN source on the Rx-side for the $P_{f}$-performance verification   
+(2) Add statistical variables to collect intermediate simulation results and obtain performance indicators  
+(3) Modify the configuration parameter to ensure the normal operation of the package detection process  
 
 | Results Statistics | Location | | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|-|-------------|-----------|----------------|----------------|
@@ -88,8 +88,7 @@ The Joint simulation results of AC/XC are as follows:
 **Legacy Algo**  
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
-  <img src="./figSet/legacy_pf1%25_pm.png" width="800" />  
-  <img src="./figSet/legacy_pf01%25_pm.png" width="800" />    
+  <img src="./figSet/legacy_pf1%25_pm.png" width="500" /> <img src="./figSet/legacy_pf01%25_pm.png" width="500" />    
 
 *Conclusion*  
 (1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
