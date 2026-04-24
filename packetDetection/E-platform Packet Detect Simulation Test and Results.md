@@ -54,19 +54,14 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 ## 2.1.  Simulation Environment Change Description
 **(1) Enable the AWGN source on the Rx-side for the $P_{f}$-performance verification**  
 **(2) Add statistical variables to collect intermediate simulation results and obtain performance indicators**  
-| Results Statistics | Location |
-|-------------|-----------|
-|CSFlag1 <br> CSFlag2 <br> CSFlag3 <br> DsssDet | in AGCLoop.m |
-|L-SIG Decoder |in OFDMHeaderDemod.m|
-|mdmOn.ofdm <br> mdmOn.dsss |in ExeCase.m |
+**(3) Modify the configuration parameter to ensure the normal operation of the package detection process**  
 
-**(3) Modify the configuration to ensure the normal operation of the package detection process**  
-| Parameter | Default Value | Modification Value | Location |
-|-------------|-----------|----------------|----------------|
-|SIM.PerfCrit|snr|pant|in tc_xxx.txt|
-|CFG.RXALG|FLPT|FXPT|in defSTAs.txt|
-|CFG.AGC|PFCT|FXPT|in defSTAs.txt|
-|RF.RFName|NON|KARST|in defSTAs.txt|
+| Results Statistics | Location | | Parameter | Default Value | Modification Value | Location |
+|-------------|-----------|-|-------------|-----------|----------------|----------------|
+| CSFlag1-3 | in AGCLoop.m | |SIM.PerfCrit|snr|pant|in tc_xxx.txt|
+| DsssDet | in AGCLoop.m | |CFG.RXALG|FLPT|FXPT|in defSTAs.txt|
+|L-SIG Decoder |in OFDMHeaderDemod.m| |CFG.AGC|PFCT|FXPT|in defSTAs.txt|
+|mdmOn.ofdm、mdmOn.dsss |in ExeCase.m | |RF.RFName|NON|KARST|in defSTAs.txt|
 
 ### 2.2.  11a PD Modify Description
 In order to continue the packet detection process even at low SNR (less than 1dB), the configuration needs to be modified as follows：
@@ -77,8 +72,9 @@ In order to continue the packet detection process even at low SNR (less than 1dB
 ### 2.3.  11b PD Modify Description
 
 ## 3. Simulation Results
-## 3.1 11a
-### 3.1.1.  $P_{f}$  
+Based on the adjustment of the simulation platform, the simulation results are as follows.  
+## 3.1. 802.11a Simulation Results
+### 3.1.1. Threshold simulation results
 **Legacy Algo**  
 
 The independent simulation results of AC/XC are as follows:  
@@ -89,7 +85,7 @@ The Joint simulation results of AC/XC are as follows:
    <img src="./figSet/legacy_1T2R_Joint_pf.png" width="800" />  
 **Redesign Algo**
 
-### 3.1.2.  $P_{m}$(AWGN)  
+### 3.1.2.  $P_{m}$(AWGN) simulation results
 **Legacy Algo**  
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
@@ -99,11 +95,11 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 *Conclusion*  
 (1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
 (2) with CFO(40ppm), XC performance degradation of about 1dB, AC performance improvement of about 1dB(delay sequence use sign bit);  
-(3) Joint:The performance of 1T2R is improved by about 3dB compared to 1T1R; with CFO(40ppm), The overall performance degradation is about 0.5dB;  
+(3) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO(40ppm), the performance degradation is about 0.5dB;  
 
 **Redesign Algo**
 
-**compare**
+**The redesign and legacy algorithm performance comparison** 
 
 
-### 3.2.  11b
+### 3.2.  802.11b Simulation Results
