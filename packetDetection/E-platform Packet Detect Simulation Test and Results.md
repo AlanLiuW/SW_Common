@@ -74,18 +74,17 @@ In order to continue the packet detection process even at low SNR (less than 1dB
 ## 3. Simulation Results
 Based on the adjustment of the simulation platform, the simulation results are as follows.  
 ## 3.1. 802.11a Simulation Results
-### 3.1.1. Threshold simulation results
+### 3.1.1. Threshold simulation
 **Legacy Algo**  
 
 The independent simulation results of AC/XC are as follows:  
  <img src="./figSet/legacy_single_AC_pf.png" width="400" /> <img src="./figSet/legacy_single_XC_pf.png" width="400" />  
  
-The Joint simulation results of AC/XC are as follows:
-  <img src="./figSet/legacy_1T1R_Joint_pf.png" width="800" />  
-   <img src="./figSet/legacy_1T2R_Joint_pf.png" width="800" />  
+The Joint simulation results of AC/XC are as follows:  
+  <img src="./figSet/legacy_1T1R_Joint_pf.png" width="400" /> <img src="./figSet/legacy_1T2R_Joint_pf.png" width="400" />  
 **Redesign Algo**
 
-### 3.1.2.  $P_{m}$(AWGN) simulation results
+### 3.1.2.  $P_{m}$(AWGN) simulation
 **Legacy Algo**  
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
