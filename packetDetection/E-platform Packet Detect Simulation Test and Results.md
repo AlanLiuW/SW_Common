@@ -78,17 +78,17 @@ Based on the adjustment of the simulation platform, the simulation results are a
 **Legacy Algo**  
 
 The independent simulation results of AC/XC are as follows:  
- <img src="./figSet/legacy_single_AC_pf.png" width="400" /> <img src="./figSet/legacy_single_XC_pf.png" width="400" />  
+ <img src="./fig_Preamble_Detection_design/legacy_single_AC_pf.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_single_XC_pf.png" width="400" />  
  
 The Joint simulation results of AC/XC are as follows:  
-  <img src="./figSet/legacy_1T1R_Joint_pf.png" width="400" /> <img src="./figSet/legacy_1T2R_Joint_pf.png" width="400" />  
+  <img src="./fig_Preamble_Detection_design/legacy_1T1R_Joint_pf.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_1T2R_Joint_pf.png" width="400" />  
 **Redesign Algo**
 
 ### 3.1.2.  $P_{m}$(AWGN) simulation
 **Legacy Algo**  
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
-  <img src="./figSet/legacy_pf1%25_pm.png" width="500" /> <img src="./figSet/legacy_pf01%25_pm.png" width="500" />    
+  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm.png" width="500" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm.png" width="500" />    
 
 *Conclusion*  
 (1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
