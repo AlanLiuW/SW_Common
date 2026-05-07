@@ -70,6 +70,12 @@ In order to continue the packet detection process even at low SNR (less than 1dB
 |RIU.rampUpGap_qdB|16|6|in defSTAs.txt|
 
 ### 2.3.  11b PD Modify Description
+To ensure that the 802.11b packet detection process can be executed even at high SNR ( > 0 dB) and the detection period falls within the first X=10 us of the actual signal with FSM sample rate 80MHz , the configuration needs to be modified as follows：
+| Parameter | Default Value | Modification Value | Location |
+|-------------|-----------|----------------|----------------|
+|idx|index of min([satTime,detTime disTime dsssTime])|4|in EventDecoder.m|
+|timeRange|1661:2460|-(Newly added para.)|in EventDecoder.m|
+|dsssFlagdebug|determined by status.dsssDet(timerange)|-(Newly added para.)|in EventDecoder.m|
 
 ## 3. Simulation Results
 Based on the adjustment of the simulation platform, the simulation results are as follows.  
