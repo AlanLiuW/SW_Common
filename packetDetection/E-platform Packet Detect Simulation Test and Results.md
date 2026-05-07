@@ -107,3 +107,19 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 
 
 ### 3.2.  802.11b Simulation Results
+### 3.1.1. Threshold simulation
+The simulation results of lagacy/redesign algo. are as follows:  
+ <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="400" />  
+*Note: 'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
+### 3.1.2.  $P_{m}$(AWGN) simulation
+The simulation results of lagacy/redesign algo. are as follows:    
+ <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="385" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="400" />  
+ *Linear and colors:  solid--no CFO; dash--CFO50ppm; blue--legacy algo. and 1R; red--redesign algo. and 1R; pink--redesign algo. and 2R.*  
+Conclusion:  
+(1) The performance of both algorithms satisfies the requirements，i.e., SNR<-4dB@Pm=0.1% & Pf=0.1%.  
+(2) redesign vs legacy (1T1R): redesign provides no gain over legacy, in fact it has negative gain (-2dB).  
+(3) 1R vs 2R (redesign): 2R provides about 3dB gain over 1R.  
+(4) w.o.CFO vs CFO50ppm： CFO is somewhat significant on redesign algo., whereas it is very small on legacy algo.
+
+ 
+ 
