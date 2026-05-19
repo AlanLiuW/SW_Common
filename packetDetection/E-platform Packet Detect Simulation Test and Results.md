@@ -95,7 +95,7 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 (1) Single simulation:   
 - XC vs AC: Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;    
 - w.o.CFO vs CFO40ppm: XC performance degradation of about 1dB, AC performance improvement of about 0.5dB;   
-- 2R vs 1R: 2R provides about 2.2dB gain over 1R;
+- 2R vs 1R: 2R provides about 2.5dB gain over 1R;
   
 (2) Joint simulation: 2R vs 1R, have Gain about 3dB; with CFO40ppm, the performance degradation is about 0.5dB;  
 
