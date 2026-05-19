@@ -63,13 +63,13 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 |L-SIG Decoder |in OFDMHeaderDemod.m| |CFG.AGC|PFCT|FXPT|in defSTAs.txt|
 |mdmOn.ofdm、mdmOn.dsss |in ExeCase.m | |RF.RFName|NON|KARST|in defSTAs.txt|
 
-### 2.2.  802.11a PD Modify Description
+## 2.2.  802.11a PD Modify Description
 To ensure that the 802.11a pd process can be executed even at low SNR ( < 1 dB), the configuration needs to be modified as follows：
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
 |RIU.rampUpGap_qdB|16|6|in defSTAs.txt|
 
-### 2.3.  802.11b PD Modify Description
+## 2.3.  802.11b PD Modify Description
 To ensure that the 802.11b packet detection process can be executed even at high SNR ( > 0 dB) and the detection period falls within the first X=10 us of the actual signal with FSM sample rate 80MHz , the configuration needs to be modified as follows：
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
@@ -82,19 +82,14 @@ To ensure that the 802.11b packet detection process can be executed even at high
 (1) The simulation results are obtained under fixed st(calculate st=1690, det st=1747) conditions.  
 (2) 'Pf-Thr' is unnormalized and should be normalized by 32 when simulating on E-platform. 
 ## 3.1. Legacy Algo
-## 3.1.1 Threshold simulation  
-
-The independent simulation results of AC/XC are as follows:  
- <img src="./fig_Preamble_Detection_design/single_pf.png" width="400" /> 
- 
-The Joint simulation results of AC/XC are as follows:  
-  <img src="./fig_Preamble_Detection_design/legacy_1T1R_Joint_pf.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_1T2R_Joint_pf.png" width="400" />  
-
-## 3.1.2  $P_{m}$(AWGN) simulation
+### 3.1.1 Threshold simulation  
+The Single simulation and Joint simulation results of AC/XC are as follows:  
+ <img src="./fig_Preamble_Detection_design/legacy_single_pf.png" width="280" /> <img src="./fig_Preamble_Detection_design/legacy_Joint_pf.png" width="300" />  
+### 3.1.2  $P_{m}$(AWGN) simulation
 
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
-  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="500" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm_new.png" width="500" />    
+  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm_new.png" width="400" />    
 
 *Conclusion*  
 (1) Single simulation:   
@@ -105,9 +100,9 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 (2) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO=40ppm, the performance degradation is about 0.5dB;  
 
 ## 3.2. Redesign Algo
-## 3.2.1 Threshold simulation  
+### 3.2.1 Threshold simulation  
 
-## 3.2.2  $P_{m}$(AWGN) simulation
+### 3.2.2  $P_{m}$(AWGN) simulation
 
 ## 3.3. Legacy vs Redesign Algo
 
@@ -117,7 +112,7 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 The simulation results of lagacy/redesign algo. are as follows:  
  <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="400" />  
 *Note: 'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
-# 4.2  $P_{m}$(AWGN) simulation
+## 4.2  $P_{m}$(AWGN) simulation
 The simulation results of lagacy/redesign algo. are as follows:    
  <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="385" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="400" />  
  *Linear and colors:  solid--no CFO; dash--CFO50ppm; blue--legacy algo. and 1R; red--redesign algo. and 1R; pink--redesign algo. and 2R.*  
