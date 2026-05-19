@@ -1,6 +1,6 @@
 # 1. The redesign and legacy algorithm solution description  
 Compare the different PD algorithm solutions on E-platform prior of the CSFlag1, including algorithms & decision strategies.
-## 1.1. 11a Algorithm / Strategy Description
+## 1.1. 802.11a Algorithm / Strategy Description
 
 **(a) Algorithm Description**
 | Algo | Legacy | redesigned |
@@ -29,7 +29,7 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 | Joint AC/XC-dec=true | AC-dec=true or XC-dec=true | AC-dec=true or XC-dec=true | 
 
 
-## 1.2. 11b Algorithm / Strategy Description
+## 1.2. 802.11b Algorithm / Strategy Description
 
 **(a) Algorithm Description**
 | Algo | Legacy | redesigned |
@@ -50,7 +50,7 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 | XC-dec = true | for n = n0 <br> XC(n) > $\rho_{XC}$*P(n) | for n = n0 and n0+22 and n0+44 <br>  XC(n) > $\rho_{XC}$*P(n)| 
 
 
-# 2. 11a/b Simulation Platform Description
+# 2. 802.11a/b Simulation Platform Description
 ## 2.1.  Simulation Environment Change Description
 (1) Enable the AWGN source on the Rx-side for the $P_{f}$-performance verification   
 (2) Add statistical variables to collect intermediate simulation results and obtain performance indicators  
@@ -63,13 +63,13 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 |L-SIG Decoder |in OFDMHeaderDemod.m| |CFG.AGC|PFCT|FXPT|in defSTAs.txt|
 |mdmOn.ofdm、mdmOn.dsss |in ExeCase.m | |RF.RFName|NON|KARST|in defSTAs.txt|
 
-### 2.2.  11a PD Modify Description
-In order to continue the packet detection process even at low SNR (less than 1dB), the configuration needs to be modified as follows：
+### 2.2.  802.11a PD Modify Description
+To ensure that the 802.11a pd process can be executed even at low SNR ( < 1 dB), the configuration needs to be modified as follows：
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
 |RIU.rampUpGap_qdB|16|6|in defSTAs.txt|
 
-### 2.3.  11b PD Modify Description
+### 2.3.  802.11b PD Modify Description
 To ensure that the 802.11b packet detection process can be executed even at high SNR ( > 0 dB) and the detection period falls within the first X=10 us of the actual signal with FSM sample rate 80MHz , the configuration needs to be modified as follows：
 | Parameter | Default Value | Modification Value | Location |
 |-------------|-----------|----------------|----------------|
@@ -77,41 +77,47 @@ To ensure that the 802.11b packet detection process can be executed even at high
 |timeRange|1661:2460|-(Newly added para.)|in EventDecoder.m|
 |dsssFlagdebug|determined by status.dsssDet(timerange)|-(Newly added para.)|in EventDecoder.m|
 
-## 3. Simulation Results
-Based on the adjustment of the simulation platform, the simulation results are as follows.  
-## 3.1. 802.11a Simulation Results
-### 3.1.1. Threshold simulation
-**Legacy Algo**  
+# 3. 802.11a Simulation Results  
+*Note:*  
+(1) The simulation results are obtained under fixed st(calculate st=1690, det st=1747) conditions.  
+(2) 'Pf-Thr' is unnormalized and should be normalized by 32 when simulating on E-platform. 
+## 3.1. Legacy Algo
+## 3.1.1 Threshold simulation  
 
 The independent simulation results of AC/XC are as follows:  
- <img src="./fig_Preamble_Detection_design/legacy_single_AC_pf.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_single_XC_pf.png" width="400" />  
+ <img src="./fig_Preamble_Detection_design/single_pf.png" width="400" /> 
  
 The Joint simulation results of AC/XC are as follows:  
   <img src="./fig_Preamble_Detection_design/legacy_1T1R_Joint_pf.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_1T2R_Joint_pf.png" width="400" />  
-**Redesign Algo**
 
-### 3.1.2.  $P_{m}$(AWGN) simulation
-**Legacy Algo**  
+## 3.1.2  $P_{m}$(AWGN) simulation
+
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
-  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm.png" width="500" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm.png" width="500" />    
+  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="500" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm_new.png" width="500" />    
 
 *Conclusion*  
-(1) Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;  
-(2) With CFO=40ppm, XC performance degradation of about 1dB, AC performance improvement of about 1dB(delay sequence use sign bit);  
-(3) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO=40ppm, the performance degradation is about 0.5dB;  
+(1) Single simulation:   
+- XC vs AC: Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;    
+- w.o.CFO vs CFO40ppm: XC performance degradation of about 1dB, AC performance improvement of about 0.5dB;   
+- 2R vs 1R: 2R provides about 2.2dB gain over 1R;
+  
+(2) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO=40ppm, the performance degradation is about 0.5dB;  
 
-**Redesign Algo**
+## 3.2. Redesign Algo
+## 3.2.1 Threshold simulation  
 
-**The redesign and legacy algorithm performance comparison** 
+## 3.2.2  $P_{m}$(AWGN) simulation
+
+## 3.3. Legacy vs Redesign Algo
 
 
-### 3.2.  802.11b Simulation Results
-### 3.1.1. Threshold simulation
+# 4.  802.11b Simulation Results
+## 4.1. Threshold simulation
 The simulation results of lagacy/redesign algo. are as follows:  
  <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="400" />  
 *Note: 'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
-### 3.1.2.  $P_{m}$(AWGN) simulation
+# 4.2  $P_{m}$(AWGN) simulation
 The simulation results of lagacy/redesign algo. are as follows:    
  <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="385" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="400" />  
  *Linear and colors:  solid--no CFO; dash--CFO50ppm; blue--legacy algo. and 1R; red--redesign algo. and 1R; pink--redesign algo. and 2R.*  
