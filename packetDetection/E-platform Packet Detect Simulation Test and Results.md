@@ -82,10 +82,10 @@ To ensure that the 802.11b packet detection process can be executed even at high
 (1) The simulation results are obtained under fixed st(calculate st=1690, det st=1747) conditions.  
 (2) 'Pf-Thr' is unnormalized and should be normalized by 32 when simulating on E-platform. 
 ## 3.1. Legacy Algo
-### 3.1.1 Threshold simulation  
+### 3.1.1. Threshold simulation  
 The Single simulation and Joint simulation results of AC/XC are as follows:  
  <img src="./fig_Preamble_Detection_design/legacy_single_pf.png" width="280" /> <img src="./fig_Preamble_Detection_design/legacy_Joint_pf.png" width="300" />  
-### 3.1.2  $P_{m}$(AWGN) simulation
+### 3.1.2.  $P_{m}$(AWGN) simulation
 
 The overall simulation results are shown below, linear and color introduction:  
 solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
@@ -100,9 +100,9 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 (2) Joint simulation: 2R vs 1R, have Gain about 3dB; with CFO40ppm, the performance degradation is about 0.5dB;  
 
 ## 3.2. Redesign Algo
-### 3.2.1 Threshold simulation  
+### 3.2.1. Threshold simulation  
 
-### 3.2.2  $P_{m}$(AWGN) simulation
+### 3.2.2.  $P_{m}$(AWGN) simulation
 
 ## 3.3. Legacy vs Redesign Algo
 
