@@ -97,7 +97,7 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 - w.o.CFO vs CFO40ppm: XC performance degradation of about 1dB, AC performance improvement of about 0.5dB;   
 - 2R vs 1R: 2R provides about 2.2dB gain over 1R;
   
-(2) Joint simulation: 1T2R vs 1T1R, have Gain about 3dB; with CFO=40ppm, the performance degradation is about 0.5dB;  
+(2) Joint simulation: 2R vs 1R, have Gain about 3dB; with CFO40ppm, the performance degradation is about 0.5dB;  
 
 ## 3.2. Redesign Algo
 ### 3.2.1 Threshold simulation  
