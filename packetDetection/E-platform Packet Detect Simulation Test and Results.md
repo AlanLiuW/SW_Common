@@ -26,7 +26,7 @@ Compare the different PD algorithm solutions on E-platform prior of the CSFlag1,
 |-| | |
 | XC-dec=true | for n = n0 <br> XC(n) > $\rho_{XC}$*P(n) | for n = n0 and n0+16 <br> XC(n) > $\rho_{XC}$*P(n)| 
 |-| | |
-| Joint AC/XC-dec=true | AC-dec=true or XC-dec=true | AC-dec=true or XC-dec=true | 
+| AC+XC-dec=true | AC-dec=true or XC-dec=true | AC-dec=true or XC-dec=true | 
 
 
 ## 1.2. 802.11b Algorithm / Strategy Description
@@ -79,25 +79,17 @@ To ensure that the 802.11b packet detection process can be executed even at high
 
 # 3. 802.11a Simulation Results  
 *Note:*  
-(1) The simulation results are obtained under fixed st(calculate st=1690, det st=1747) conditions.  
+(1) The simulation results are obtained under fixed **st(calculate st=1690, det st=1747)** conditions.  
 (2) 'Pf-Thr' is unnormalized and should be normalized by 32 when simulating on E-platform. 
 ## 3.1. Legacy Algo
 ### 3.1.1. Threshold simulation  
-The Single simulation and Joint simulation results of AC/XC are as follows:  
  <img src="./fig_Preamble_Detection_design/legacy_single_pf.png" width="280" /> <img src="./fig_Preamble_Detection_design/legacy_Joint_pf.png" width="300" />  
 ### 3.1.2.  $P_{m}$(AWGN) simulation
-
-The overall simulation results are shown below, linear and color introduction:  
-solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;  
   <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm_new.png" width="400" />    
-
+*Linear and colors: solid--no CFO；dash--CFO40ppm；red--XC-only，blue--AC-only，green--AC+XC.*   
 *Conclusion*  
-(1) Single simulation:   
-- XC vs AC: Under the same $P_{f}$ conditions, XC $P_{m}$ performs better than AC;    
-- w.o.CFO vs CFO40ppm: XC performance degradation of about 1dB, AC performance improvement of about 0.5dB;   
-- 2R vs 1R: 2R provides about 2.5dB gain over 1R;
-  
-(2) Joint simulation: 2R vs 1R, have Gain about 3dB; with CFO40ppm, the performance degradation is about 0.5dB;  
+(1) AC/XC-Only: XC better than AC(2dB); 2R better than 1R(2.2dB); XC w.o.CFO better than CFO40ppm(1dB);   
+(2) AC+XC: 2R better than 1R(2.2dB); w.o.CFO better than CFO40ppm(0.5dB);  
 
 ## 3.2. Redesign Algo
 ### 3.2.1. Threshold simulation  
@@ -109,18 +101,18 @@ solid：no CFO，dash：CFO=40ppm；red：XC，blue：AC，green：Joint;
 
 # 4.  802.11b Simulation Results
 ## 4.1. Threshold simulation
-The simulation results of lagacy/redesign algo. are as follows:  
- <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="400" />  
-*Note: 'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
-## 4.2  $P_{m}$(AWGN) simulation
-The simulation results of lagacy/redesign algo. are as follows:    
- <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="385" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="400" />  
- *Linear and colors:  solid--no CFO; dash--CFO50ppm; blue--legacy algo. and 1R; red--redesign algo. and 1R; pink--redesign algo. and 2R.*  
+ <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="400" />    
+ 
+*Note:'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
+
+## 4.2  $P_{m}$(AWGN) simulation  
+ <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="385" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="400" />    
+ *Linear and colors:  solid--no CFO; dash--CFO50ppm; blue--legacy algo. and 1R; red--redesign algo. and 1R; pink--redesign algo. and 2R.*    
 Conclusion:  
 (1) The performance of both algorithms satisfies the requirements，i.e., SNR<-4dB@Pm=0.1% & Pf=0.1%.  
 (2) redesign vs legacy (1T1R): redesign provides no gain over legacy, in fact it has negative gain (-2dB for Pf=0.1%).  
 (3) 1R vs 2R (redesign): 2R provides about 3dB gain over 1R.  
-(4) w.o.CFO vs CFO50ppm： CFO is somewhat significant on redesign algo., whereas it is very small on legacy algo.
+(4) w.o.CFO vs CFO50ppm： CFO is somewhat significant on redesign algo., whereas it is very small on legacy algo.  
 
  
  
