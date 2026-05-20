@@ -82,33 +82,22 @@ To ensure that the 802.11b packet detection process can be executed even at high
 (1) The simulation results are obtained under fixed **st(calculate st=1690, det st=1747)** conditions.  
 (2) 'Pf-Thr' is unnormalized and should be normalized by 32 when simulating on E-platform. 
 ## 3.1. Legacy Algo
-### 3.1.1. Threshold simulation  
- <img src="./fig_Preamble_Detection_design/legacy_single_pf.png" width="280" /> <img src="./fig_Preamble_Detection_design/legacy_Joint_pf.png" width="300" />  
-### 3.1.2.  $P_{m}$(AWGN) simulation
-  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_pf01%25_pm_new.png" width="400" />    
+  <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_single_pf.png" width="300" /> <img src="./fig_Preamble_Detection_design/legacy_Joint_pf.png" width="300" />   
 *Linear and colors: solid--no CFO；dash--CFO40ppm；red--XC-only，blue--AC-only，green--AC+XC.*   
-*Conclusion*  
+**Conclusion:**   
 (1) AC/XC-Only: XC better than AC(2dB); 2R better than 1R(2.2dB); XC w.o.CFO better than CFO40ppm(1dB);   
 (2) AC+XC: 2R better than 1R(2.2dB); w.o.CFO better than CFO40ppm(0.5dB);  
 
 ## 3.2. Redesign Algo
-### 3.2.1. Threshold simulation  
-
-### 3.2.2.  $P_{m}$(AWGN) simulation
 
 ## 3.3. Legacy vs Redesign Algo
 
 
 # 4.  802.11b Simulation Results
-## 4.1. Threshold simulation
- <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="400" />    
- 
-*Note:'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
-
-## 4.2  $P_{m}$(AWGN) simulation  
- <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="385" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="400" />    
+ <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="300" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="300" /> <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="300" />   
  *Linear and colors:  solid--no CFO; dash--CFO50ppm; blue--legacy algo. and 1R; red--redesign algo. and 1R; pink--redesign algo. and 2R.*    
-Conclusion:  
+ *Note:'Thr' is unnormalized and should be normalized by 32 when simulating on E-platform.*   
+**Conclusion:**    
 (1) The performance of both algorithms satisfies the requirements，i.e., SNR<-4dB@Pm=0.1% & Pf=0.1%.  
 (2) redesign vs legacy (1T1R): redesign provides no gain over legacy, in fact it has negative gain (-2dB for Pf=0.1%).  
 (3) 1R vs 2R (redesign): 2R provides about 3dB gain over 1R.  
