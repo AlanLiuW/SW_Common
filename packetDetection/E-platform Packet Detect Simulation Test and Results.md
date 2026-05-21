@@ -85,8 +85,8 @@ To ensure that the 802.11b packet detection process can be executed even at high
   <img src="./fig_Preamble_Detection_design/legacy_pf1%25_pm_new.png" width="400" /> <img src="./fig_Preamble_Detection_design/legacy_single_pf.png" width="300" /> <img src="./fig_Preamble_Detection_design/legacy_Joint_pf.png" width="300" />   
 *Linear and colors: solid--no CFO；dash--CFO40ppm；red--XC-only，blue--AC-only，green--AC+XC.*   
 **Conclusion:**   
-(1) AC/XC-Only: XC better than AC(2dB); 2R better than 1R(2.2dB); XC w.o.CFO better than CFO40ppm(1dB);   
-(2) AC+XC: 2R better than 1R(2.2dB); w.o.CFO better than CFO40ppm(0.5dB);  
+(1) AC/XC-Only: XC better than AC(2dB); 2R better than 1R(2.5dB); XC w.o.CFO better than CFO40ppm(0.5dB);   
+(2) AC+XC: 2R better than 1R(2.5dB); w.o.CFO better than CFO40ppm(0.5dB);  
 
 ## 3.2. Redesign Algo
 
