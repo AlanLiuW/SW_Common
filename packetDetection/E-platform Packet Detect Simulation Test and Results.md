@@ -78,7 +78,7 @@ To ensure that the 802.11b packet detection process can be executed even at high
 |dsssFlagdebug|determined by status.dsssDet(timerange)|-(Newly added para.)|in EventDecoder.m|
 
 # 3. 802.11a Simulation Results  
-*Note:*  
+**Note:**    
 (1) The simulation results are obtained under fixed **st(calculate st=1690, det st=1747)** conditions.  
 (2) 'Pf-Thr' is unnormalized and should be normalized by 32 when simulating on E-platform. 
 ## 3.1. Legacy Algo
