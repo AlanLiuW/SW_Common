@@ -89,7 +89,7 @@ To ensure that the 802.11b packet detection process can be executed even at high
 (2) AC+XC: 2R better than 1R(2.5dB); w.o.CFO better than CFO40ppm(0.5dB);  
 
 ## 3.2. Redesign Algo
-  <img src="./fig_Preamble_Detection_design/redesign_Pf1%_pm.png" width="400" /> <img src="./fig_Preamble_Detection_design/ACXCOnly threshold.png" width="300" /> <img src="./fig_Preamble_Detection_design/AC+XC threshold tables.png" width="300" />   
+  <img src="./fig_Preamble_Detection_design/redesign_Pf1%25_pm.png" width="400" /> <img src="./fig_Preamble_Detection_design/ACXCOnly threshold.png" width="280" /> <img src="./fig_Preamble_Detection_design/AC+XC threshold tables.png" width="250" />   
 *Linear and colors: solid--no CFO；dash--CFO40ppm；red--XC-only，blue--AC-only，green--AC+XC.*  
 **Conclusion:**   
 (1) AC/XC-Only: XC better than AC(about 1dB); 2R better than 1R(about 3dB); w.o.CFO and CFO40ppm perform similarly;   
