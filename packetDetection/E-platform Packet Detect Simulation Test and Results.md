@@ -96,7 +96,10 @@ To ensure that the 802.11b packet detection process can be executed even at high
 (2) AC+XC: 2R better than 1R(about 3dB); w.o.CFO and CFO40ppm perform similarly; 
 
 ## 3.3. Legacy vs Redesign Algo
-
+  <img src="./fig_Preamble_Detection_design/legacy vs redesign Pm table.png" width="600" />   
+  
+**Conclusion:**   
+(1) redesign algo. consistently outperforms legacy algo. by > 2dB across all scenarios;      
 
 # 4.  802.11b Simulation Results
  <img src="./fig_Preamble_Detection_design/11b_Pm_Pf1%25.png" width="300" /> <img src="./fig_Preamble_Detection_design/11b_Pm_Pf01%25.png" width="300" /> <img src="./fig_Preamble_Detection_design/11b_Pf.png" width="300" />   
