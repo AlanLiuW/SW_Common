@@ -56,7 +56,7 @@
 
 ### 1.2. reference design
 **top-level design diagram**
- <img src="./fig_Preamble_Detection_design/11a_PD_design_diagram_toplevel_1.png" />
+ <img src="./fig_Preamble_Detection_design/11a_packet_det_toplevel_v0.1.png" />
 
 **lower-level design diagram**  
  <img src="./fig_Preamble_Detection_design/11a_PD%20design%20diagram_lowerlevel_1_CUMSUM.png" width="500" />
@@ -117,7 +117,7 @@ The LUT in the weight_comp_lut module is shown below (used for both 11a/b)
 
 ### 2.2. reference design
 **top-level design diagram** 
- <img src="./fig_Preamble_Detection_design/11b_PD_design_diagram_toplevel_1.png" />
+ <img src="./fig_Preamble_Detection_design/11b_packet_det_toplevel_v0.1.png" />
  
 **lower-level design diagram**  
  <img src="./fig_Preamble_Detection_design/11b_PD%20design%20diagram_lowerlevel_1_barkercodecorr.png" width="400" />
