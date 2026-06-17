@@ -7,41 +7,42 @@
 
 | Module name | Instances | Input bitwdith | Output bitwidth | Description |
 |-------------|-----------|----------------|-----------------|-------------|
-| cordic_foe | 1 | 12-bit I and Q | Angle, TBD (10 for now) | Frequency offset angle estimation | 
-| cordic_foc | 1 per antenna, 2 total | 12-bit I and Q and 10-bit angle | 13-bit I and Q | FOE derotation CORDIC. Scaled output with CORDIC factor |
+|cordic\_foe|1|12-bit I and Q|Angle, TBD (10 for now)|Frequency offset angle estimation|
+|cordic\_foc|1 per antenna, 2 total|12-bit I and Q and 10-bit angle|13-bit I and Q|FOE derotation CORDIC. Scaled output with CORDIC factor|
 
 #### 1.1.2. Internal modules
 
 | Module name | Instances | Input bitwdith | Output bitwidth | Description |
 |-------------|-----------|----------------|-----------------|-------------|
-| cordic_mag | 2, 1 per antenna | 12-bit I and Q | 12-bit mag and 10-bit angle | Compute magnitude and angle for auto-correlation rotation |
+|cordic\_mag|2, 1 per antenna|12-bit I and Q|12-bit mag and 10-bit angle|Compute magnitude and angle for auto-correlation rotation|
 | - |  |  |  |  |
-| fixed_scaling_cordic | 2, 1 per antenna | 12 bits | 12 bits | CORDIC output scaling down - divide by 1.6468 |
-| delay_line_8_first | 2, 1 per antenna | 10 bits | 10 bits | Delay line for auto-corr angle first 8 taps. |
-| delay_line_8_second | 2, 1 per antenna | 10 bits | 10 bits | Delay line for auto-corr angle second 8 taps |
+|fixed\_scaling\_cordic|2, 1 per antenna|12 bit|12 bit|CORDIC output scaling down - divide by 1.6468|
+|delay\_line\_8\_first|2, 1 per antenna|10 bits|10 bits|Delay line for auto-corr angle first 8 taps.|
+|delay\_line\_8\_second|2, 1 per antenna|10 bits|10 bits|Delay line for auto-corr angle second 8 taps|
 | - |  |  |  |  |
-| cordic_rot_auto16 | 2, 1 per antenna | 12-bit A and 10 bit angle | 13-bit I and Q | Perform auto-correlation preprocess for 16-tap delay line：(A,angle->I,Q) |
-| running_sum_auto16 | 4, I and Q and 2 antennas | 13 bits | 19 bits | Running sum for auto-correlation. Max depth 64, covering 16, 32, 48. |
-| antenna_weighted_combine | 2, I and Q | 19 bits ant1 and ant2 | 19 bits | Antenna weighted combine of auto-correlation sum 16. One for I, one for Q. |
-| mod_approx_auto16 | 1 | 19-bit I and Q | 19-bit mag out | Approximation computation for modulus |
-| thresh_auto16 | 1 | 19-bit weighted auto sum and weighted mag sum | 1 bit | Threshold module for auto-correlation, 16 tap, above threshold. |
+|cordic\_rot\_auto16|2, 1 per antenna|12-bit I and Q|13-bit I and Q|Perform auto-correlation for 16-tap delay line|
+|running\_sum\_auto16|4, I and Q and 2 antennas|13 bits|19 bits|Running sum for auto-correlation. Max depth 64, covering 16, 32, 48.|
+|antenna\_weighted\_combine|2, I and Q|19 bits ant1 and ant2|19 bits|Antenna weighted combine of auto-correlation sum 16. One for I, one for Q.|
+|mod\_approx\_auto16|1|19-bit I and Q|19-bit mag out|Approximation computation for modulus|
+|thresh\_auto16|1|19-bit weighted auto sum and weighted mag sum|1 bit|Threshold module for auto-correlation, 16 tap, above threshold.|
 | - |  |  |  |  |
-| cordic_rot_auto8 | 2, 1 per antenna | 12-bit A and 10 bit angle | 13-bit I and Q | Perform auto-correlation preprocess for 8-tap delay line：(A,angle->I,Q) |
-| running_sum_auto8 | 4, I and Q and 2 antennas | 13 bits | 19 bits | Running sum for auto-correlation. Max depth 64, covering 16, 32, 48. |
-| mod_approx_auto8 | 2, 1 per antenna | 19-bit I and Q | 19-bit mag out | Approximation computation for modulus |
-| antenna_weighted_combine | 1 | 19 bits ant1 and ant2 | 19 bits | Antenna weighted combine of auto-correlation sum 8. |
-| thresh_auto8 | 1 | 19-bit weighted auto sum and weighted mag sum | 1 bit | Threshold module for auto-correlation, 8 tap, below threshold. |
+|cordic\_rot\_auto8|2, 1 per antenna|12-bit I and Q|13-bit I and Q|Perform auto-correlation for 8-tap delay line|
+|running\_sum\_auto8|4, I and Q and 2 antennas|13 bits|19 bits|Running sum for auto-correlation. Max depth 64, covering 16, 32, 48.|
+|mod\_approx\_auto8|2, 1 per antenna|19-bit I and Q|19-bit mag out|Approximation computation for modulus|
+|antenna\_weighted\_combine|1|19 bits ant1 and ant2|19 bits|Antenna weighted combine of auto-correlation sum 8.|
+|thresh\_auto8|1|19-bit weighted auto sum and weighted mag sum|1 bit|Threshold module for auto-correlation, 8 tap, below threshold.|
 | - |  |  |  |  |
-| fixed_param_crosscorr | 2, 1 per antenna | 13-bit I and Q | 19-bit I and Q | Fixed parameter cross correlation filter using adders and subtractors. | 
-| mod_approx_cross | 2, 1 per antenna | 19-bit I and Q | 19-bit mag out | Approximation computation for modulus. |
-| antenna_weighted_combine | 1 | 19 bits ant1 and ant2 | 19 bits | Antenna weighted combine of cross-correlation sum. |
-| thresh_cross | 1 | 19-bit weighted cross sum and weighted mag sum | 1 bit | Threshold module for cross correlation, above threshold. |
+|**round\_13\_to\_7**|4, I and Q and 2 antennas|13 bits|7 bits|Input truncate/round to reduce computation complexity.|
+|fixed\_param\_crosscorr|2, 1 per antenna|7-bit I and Q|13-bit I and Q|Fixed parameter cross correlation filter using adders and subtractors.|
+|mod\_approx\_cross|2, 1 per antenna|13-bit I and Q|13-bit mag out|Approximation computation for modulus.|
+|antenna\_weighted\_combine|1|13 bits ant1 and ant2|13 bits|Antenna weighted combine of cross-correlation sum.|
+|thresh\_cross|1|13-bit weighted cross sum and weighted mag sum|1 bit|Threshold module for cross correlation, above threshold.|
 | - |  |  |  |  |
-| running_sum_mag | 2, 1 per antenna |  12 bits | 18 bits | Running sum for power/magnitude. Max depth 64, covering 16, 32, 48. |
-| weight_comp_lut | 1 | 18-bit ant1 and ant2 | 3-bit ant1 and ant2 | Compute weight for each antenna from mag sum |
-| antenna_weighted_combine | 1 | 18 bits ant1 and ant2 | 18 bits | Antenna weighted combine of mag sum. |
+|running\_sum\_mag|2, 1 per antenna|12 bits|18 bits|Running sum for power/magnitude. Max depth 64, covering 16, 32, 48.|
+|weight\_comp\_lut|1|18-bit ant1 and ant2|3-bit ant1 and ant2|Compute weight for each antenna from mag sum|
+|antenna\_weighted\_combine|1|18 bits ant1 and ant2|18 bits|Antenna weighted combine of mag sum.|
 | - |  |  |  |  |
-| dynamic_scaling_19_to_12 | 2, I and Q | 19 bits | 12 bits | Scaling from 19 bits to 12 bits to be used by cordic_foe | 
+|**dynamic\_scaling\_19\_to\_12**|2, I and Q|19 bits|12 bits|Scaling from 19 bits to 12 bits to be used by cordic\_foe|
 
 #### 1.1.3. Inputs and outputs
 
@@ -68,18 +69,19 @@
 **Module Abbreviation Reference Table**  
 | Module name | design diagram | | Module name | design diagram |
 |-------------|--------------|-|--------------|-------------|
-| cordic_foe | FOE(Cordic-V) | | cordic_foc | FOC(Cordic-III)| 
-| cordic_mag | Cordic-I | | fixed_scaling_cordic | scaling_cordic | 
-| delay_line_8_first | (located in) Pre-Process | | delay_line_8_second | (located in) Pre-Process |
-| cordic_rot_auto16 | Cordic-IV | | running_sum_auto16 | CUMSUM in Auto-Correlation | 
-| antenna_weighted_combine | Antenna Combine | | mod_approx_auto16 | appro. modulus |
-| thresh_auto16 | Decision| |cordic_rot_auto8 | Cordic-II |
-| running_sum_auto8 | CUMSUM in Interf.Meas | | mod_approx_auto8 | appro. Modulus in Interf.Meas | 
-| antenna_weighted_combine | Antenna Combine | | thresh_auto8 | Decision | 
-| fixed_param_crosscorr | MovingSUM || mod_approx_cross | appro. Modulus in Cross-Correlation | 
-| antenna_weighted_combine | Antenna Combine | |thresh_cross | Decision |
-| running_sum_mag | CUMSUM in Auto-Correlation | |weight_comp_lut* | A.C.Weight |
-| antenna_weighted_combine | Antenna Combine | |dynamic_scaling_19_to_12 | Dynamic scaling | 
+|cordic\_foe|FOE(Cordic-V)||cordic\_foc|FOC(Cordic-III)|
+|cordic\_mag|Cordic-I||fixed\_scaling\_cordic|scaling\_cordic|
+|delay\_line\_8\_first|(located in) Pre-Process||delay\_line\_8\_second|(located in) Pre-Process|
+|cordic\_rot\_auto16|Cordic-IV||running\_sum\_auto16|CUMSUM in Auto-Correlation|
+|antenna\_weighted\_combine|Antenna Combine||mod\_approx\_auto16|appro.modulus|
+|thresh\_auto16|Decision||cordic\_rot\_auto8|Cordic-II|
+|running\_sum\_auto8|CUMSUM in Interf.Meas||mod\_approx\_auto8|appro.Modulus in Interf.Meas|
+|antenna\_weighted\_combine|Antenna Combine||thresh\_auto8|Decision|
+|round\_13\_to\_7|(located in) Pre-Process||fixed\_param\_crosscorr|MovingSUM|
+|mod\_approx\_cross|appro.Modulus in Cross-Correlation||antenna\_weighted\_combine|Antenna Combine|
+|thresh\_cross|Decision||running\_sum\_mag|CUMSUM in Auto-Correlation|
+|weight\_comp\_lut* |A.C.Weight||antenna\_weighted\_combine|Antenna Combine|
+|dynamic\_scaling\_19\_to\_12|Dynamic scaling||||
 
 The LUT in the weight_comp_lut module is shown below (used for both 11a/b)  
  <img src="./fig_Preamble_Detection_design/LUT.png" width="500" />
@@ -92,20 +94,21 @@ The LUT in the weight_comp_lut module is shown below (used for both 11a/b)
 
 | Module name | Instances | Input bitwdith | Output bitwidth | Description |
 |-------------|-----------|----------------|-----------------|-------------|
-| delay_add_1tap | 4, I and Q and 2 antennas | 6 bits | 7 bits | input add the delayed-1 input |
-| fixed_param_crosscorr | 2, 1 per antenna | 7-bit I and Q | 11-bit I and Q | Fixed parameter cross correlation filter using adders and subtractors |
-| delay_add_22tap | 4, I and Q and 2 antennas | 11-bit I and Q | 12-bit I and Q | combine the same consecutive 2 preamble bits and sum them up |
-| delay_sub_22tap | 4, I and Q and 2 antennas | 11-bit I and Q | 12-bit I and Q | combine the different consecutive 2 preamble bits and sum them up |
-| delay_line_22 | 4, I and Q and 2 antennas | 11 bits | 11 bits | delay line for sum up the cross-correlation in "delay_add_22tap" & "delay_sub_22tap" modules |
-| mod_approx_crosscorr | 4, 2 possible preamble-bits combinations and 2 antennas | 12-bit I and Q | 12-bit mag out | Approximation computation modulus |
-| max_select | 2, 1 per antenna | 12-bit | 12-bit | Select the data with the maximum modulus value |
-| antenna_weighted_combine | 1 | 12 bits ant1 and ant2 | 12 bits | Antenna weighted combine of cross-correlation sum |
-| thresh_cross | 1 | 12-bit weighted cross sum and weighted mag sum | 1 bit | Threshold module for cross correlation, above threshold |
-| - |  |  |  |  |
-| mod_approx_pwr | 2, 1 per antenna | 6-bit I and Q | 6-bit mag out | Approximation computation modulus for every truncted-input |
-| runing_sum_mag | 2, 1 per antenna | 6-bit mag | 12-bit mag out | Running sum for magnitude |
-| weight_comp_lut | 1 | 12-bit ant1 and ant2 | 3-bit ant1 and ant2 | Compute weight for each antenna from mag sum |
-| antenna_weighted_combine | 1 | 12 bits ant1 and ant2 | 12 bits | Antenna weighted combine of mag sum |
+|round\_12\_to\_6|4, I and Q and 2 antennas|12 bits|6 bits|Input truncate/round to reduce computation complexity|
+|delay\_add\_1tap|4, I and Q and 2 antennas|6 bits|7 bits|input add the delayed-1 input|
+|fixed\_param\_crosscorr|2, 1 per antenna|7-bit I and Q|11-bit I and Q|Fixed parameter cross correlation filter using adders and subtractors|
+|delay\_add\_22tap|4, I and Q and 2 antennas|11-bit I and Q|12-bit I and Q|combine the same consecutive 2 preamble bits and sum them up|
+|delay\_sub\_22tap|4, I and Q and 2 antennas|11-bit I and Q|12-bit I and Q|combine the different consecutive 2 preamble bits and sum them up|
+|delay\_line\_22|4, I and Q and 2 antennas|11 bits|11 bits|delay line for sum up the cross-correlation in "delay\_add\_22tap" \& "delay\_sub\_22tap" modules|
+|mod\_approx\_crosscorr|4, 2 possible preamble-bits combinations and 2 antennas|12-bit I and Q|12-bit mag out|Approximation computation modulus|
+|max\_select|2, 1 per antenna|12-bit|12-bit|Select the data with the maximum modulus value|
+|antenna\_weighted\_combine|1|12 bits ant1 and ant2|12 bits|Antenna weighted combine of cross-correlation sum|
+|thresh\_cross|1|12-bit weighted cross sum and weighted mag sum|1 bit|Threshold module for cross correlation, above threshold|
+|-|||||
+|mod\_approx\_pwr|2, 1 per antenna|6-bit I and Q|6-bit mag out|Approximation computation modulus for every truncted-input|
+|runing\_sum\_mag|2, 1 per antenna|6-bit mag|12-bit mag out|Running sum for magnitude|
+|weight\_comp\_lut|1|12-bit ant1 and ant2|3-bit ant1 and ant2|Compute weight for each antenna from mag sum|
+|antenna\_weighted\_combine|1|12 bits ant1 and ant2|12 bits|Antenna weighted combine of mag sum|
 
 #### 2.1.3. Inputs and outputs
 
@@ -130,10 +133,10 @@ The LUT in the weight_comp_lut module is shown below (used for both 11a/b)
 **Module Abbreviation Reference Table**  
 | Module name | design diagram | | Module name | design diagram |
 |-------------|--------------|-|--------------|-------------|
-| delay_add_1tap | Pre-process | |fixed_param_crosscorr | Barker code Correlation |
-| delay_add_22tap | (located in) CUMSUM || delay_sub_22tap | (located in) CUMSUM |
-| delay_line_22 | (located in) CUMSUM || mod_approx_crosscorr | appro. modulus | 
-| max_select | MAX || antenna_weighted_combine | Antenna Combine | 
-| thresh_cross | Comp. || mod_approx_pwr | appro. modulus |
-| runing_sum_mag | see toplevel || weight_comp_lut* | A.C.Weight | 
-| antenna_weighted_combine | Antenna Combine | ||
+|round\_12\_to\_6|in top-level||delay\_add\_1tap|Pre-process|
+|fixed\_param\_crosscorr|Barker code Correlation||delay\_add\_22tap|(located in) CUMSUM|
+|delay\_sub\_22tap|(located in) CUMSUM||delay\_line\_22|(located in) CUMSUM|
+|mod\_approx\_crosscorr|appro. modulus||max\_select|MAX|
+|antenna\_weighted\_combine|Antenna Combine||thresh\_cross|Decision|
+|mod\_approx\_pwr|appro. modulus||runing\_sum\_mag|in top-level|
+|weight\_comp\_lut* |A.C.Weight||antenna\_weighted\_combine|Antenna Combine|
