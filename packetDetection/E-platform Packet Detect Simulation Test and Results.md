@@ -1,6 +1,7 @@
 # 1. The redesign and legacy algorithm solution description  
 Compare the different PD algorithm solutions on E-platform prior of the CSFlag1, including algorithms & decision strategies.
-## 1.1. 802.11a Algorithm / Strategy Description
+
+## 1.1. 802.11a Algorithm / Strategy Descriptions
 
 **(a) Algorithm Description**
 | Algo | Legacy | redesigned |
